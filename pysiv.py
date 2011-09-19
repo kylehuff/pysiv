@@ -66,7 +66,7 @@ def get_volume( ):
     	volstr = mixer.get( mixer_device )
     else:
         volstr = mixer.getvolume()
-	return ( int( volstr[0] ), int( volstr[1] ) )
+    return volstr if len(volstr) == 1 else ( int( volstr[0] ), int( volstr[1] ) )
 
 # Function that changes the value of the specified mixer_device control.
 # 	Does not return.
@@ -125,7 +125,10 @@ def store_window_pos( positionX, positionY ):
 		print e
 
 vol = get_volume()	# Get the current volume on initialization so we can populate our adjustment widget
-vol = ( int( vol[0] ) + int( vol[1] ) ) / 2	# Add the Left and Right values returned together and devide that by two for a total volume to update our mono adjustment scale
+if len(vol) > 1:
+    vol = ( int( vol[0] ) + int( vol[1] ) ) / 2	# Add the Left and Right values returned together and devide that by two for a total volume to update our mono adjustment scale
+else:
+    vol = (int(vol))
 
 window = gtk.Window( gtk.WINDOW_POPUP )	# Create a window without any window manager decorations, that always stays on top.
 window.set_position( gtk.WIN_POS_CENTER )	# Set the initial position to the center of the screen
