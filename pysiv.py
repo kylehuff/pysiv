@@ -128,7 +128,7 @@ vol = get_volume()	# Get the current volume on initialization so we can populate
 if len(vol) > 1:
     vol = ( int( vol[0] ) + int( vol[1] ) ) / 2	# Add the Left and Right values returned together and devide that by two for a total volume to update our mono adjustment scale
 else:
-    vol = (int(vol))
+    vol = (int(vol[0]))
 
 window = gtk.Window( gtk.WINDOW_POPUP )	# Create a window without any window manager decorations, that always stays on top.
 window.set_position( gtk.WIN_POS_CENTER )	# Set the initial position to the center of the screen
