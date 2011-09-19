@@ -66,7 +66,7 @@ def get_volume( ):
     	volstr = mixer.get( mixer_device )
     else:
         volstr = mixer.getvolume()
-	return ( int( volstr[0] ), int( volstr[1] ) )
+    return volstr if len(volstr) == 1 else ( int( volstr[0] ), int( volstr[1] ) )
 
 # Function that changes the value of the specified mixer_device control.
 # 	Does not return.
