@@ -1,0 +1,3 @@
+PySIV: Pythong Simple Interactive Volume-Control
+
+Requres either python-ossaudiodev or python-alsaaudio, depending on your system
